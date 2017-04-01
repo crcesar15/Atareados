@@ -1,0 +1,42 @@
+.titulo{
+    font-family: 'Indie Flower', cursive;
+    font-size: 50px;
+}
+
+.jumbotron{
+  padding-top: 3%;
+  background-color:rgb(47, 55, 77);
+  height: 20%;
+}
+
+#cont{
+  background-color: rgb(236, 236, 236);
+}
+.who{
+  background-color: rgb(242, 242, 242);
+}
+
+body{
+  background-color:rgba(149, 149, 149, 0.18);
+}
+
+.white{
+  color:rgb(0, 19, 68);
+  font-size: 34px;
+}
+
+p{
+  font-size:18px;
+  color: rgb(5, 2, 62):
+}
+
+input[type=number]::-webkit-outer-spin-button,
+
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance:textfield;
+}

@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>jQuery UI Tooltip - Default functionality</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+      $(document).ready(function(){
+        $('#myTooltip').tooltip({ open: function (e) { setTimeout(function () { $(e.target).tooltip('close'); }, 1000); } });
+        $('#myBtn').click(function () { $('#myTooltip').tooltip('open'); });
+        }
+      );
+    </script>
+    <style>
+        label {
+            display: inline-block;
+            width: 5em;
+        }
+    </style>
+</head>
+
+<body>
+   <a id="myTooltip" title="Su C.I. Invalido"></a>
+   <input type="text" name="button" id="myBtn">
+</body>
+
+</html>

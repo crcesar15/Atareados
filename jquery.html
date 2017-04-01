@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>jquery</title>
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+  </head>
+  <body>
+    <div id="mensaje" class="alert alert-success">
+      Hola , esto debe ocultarse
+    </div>
+    <button id="mostrar" type="button" class="btn btn-success">
+      Mostrar
+    </button>
+    <button id="ocultar" type="button" class="btn btn-danger">
+      Ocultar
+    </button>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="./jquery/jquery.min.js"></script>
+    <script type="text/javascript">
+      $('#mostrar').click(function(event) {
+        console.log('mostar');
+        $('#mensaje').fadeIn(300);
+      });
+      $('#ocultar').click(function(event) {
+        $('#mensaje').fadeOut(300);
+        console.log('ocultar');
+      });
+    </script>
+  </body>
+</html>

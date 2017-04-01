@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Camera</title>
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+
+        </div>
+    </div>
+    <input type="file" accept="image/*" multiple="multiple" id="capture" capture="camera">
+    <button id="b" type="button" class="btn btn-success">
+        Tomar foto
+    </button>
+
+    <script src="./jquery/jquery.min.js"></script>
+    <script src="./bootstrap/js/bootstrap.min.js"></script>
+    <script>
+    var j = 0;
+    var k = 0;
+    var datos = [];
+
+    $('document').ready(function(){
+      var cont = $('div.container .row');
+      var html = '';
+      datos=[];
+      $("#capture").change(function(){
+        readURL(this);
+      });
+      function readURL(data) {
+      var inputs = document.getElementById('capture');
+      var input = inputs.files;
+      console.log(input.length);
+
+      for (var i = 0; i < input.length; i++) {
+        var files = new FormData();
+        files.append('input0',input[i]);
+        datos[k] = files;
+        k = k+1;
+      }
+      for (var i = j; i < input.length; i++) {
+        if (data.files  && data.files[i]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+              html = cont.html()+'<div class="col-xs-3"> <a class="thumbnail"><img src='+e.target.result+' ></a></div>';
+              cont.html(html);
+
+              //$('#img').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(data.files[i]);
+          }
+          else{
+            console.log('error');
+          }
+          j = i;
+      }
+
+      }
+    });
+    $('#b').click(function() {
+      console.log(datos.length);
+    for (var i = 0; i < datos.length; i++) {
+      $.ajax({
+        url: './camera.php?num='+i,
+        type: 'POST',
+        contentType:false,
+        data: datos[i],
+        processData:false,
+        cache:false
+      })
+      .done(function(msg) {
+        alert('lol?');
+      })
+      .fail(function() {
+        alert("error");
+      });
+    }
+    });
+    </script>
+</body>
+
+</html>
