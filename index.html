@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <title>...:::Atareados:::...</title>
     <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="./css/login.css">
@@ -19,33 +19,34 @@
     <div id="cont" class=" container">
         <br>
         <div class="row">
-            <div id="who" class="sr-only who col-xs-8 col-md-4 col-xs-offset-2 col-md-offset-1">
+          <div class="who col-xs-8 col-md-4 col-md-offset-1 col-xs-offset-2">
+              <h3 class="text-center white">Iniciar Sesión</h3>
+              <br>
+              <div class="form-group">
+                  <form id="login" method="post">
+                      <label for="">Usuario</label>
+                      <input type="text" class="form-control" name="user" placeholder="" required="true">
+                      <br>
+                      <label for="">Contraseña</label>
+                      <input type="password" class="form-control" name="password" placeholder="" required="true">
+                      <br>
+                      <center>
+                          <button type="submit" class="btn btn-success">Entrar</button>
+                      </center>
+                      <br>
+                      <center>
+                          <div class="alert alert-danger sr-only" id="msg"></div>
+                          <a data-toggle="modal" data-target="#myModal">¿Aun no estas Registrado? ¡Registrate!</a>
+                      </center>
+                  </form>
+              </div>
+          </div>
+            <div id="who" class="hidden-md hidden-xs who col-xs-8 col-md-4 col-xs-offset-2 col-md-offset-2">
                 <h3 class="text-center white">¿Quienes Somos?</h3>
                 <br>
                 <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus nulla provident labore in non illum quam dolorem laboriosam excepturi officia, incidunt deserunt quod officiis dignissimos, ex quisquam unde quae dolorum.</p>
             </div>
-            <div class="who col-xs-8 col-md-4 col-md-offset-2 col-xs-offset-2">
-                <h3 class="text-center white">Iniciar Sesión</h3>
-                <br>
-                <div class="form-group">
-                    <form class="" action="login.php" method="post">
-                        <label for="">Usuario</label>
-                        <input type="text" class="form-control" id="" placeholder="" required="true">
-                        <br>
-                        <label for="">Contraseña</label>
-                        <input type="password" class="form-control" id="" placeholder="" required="true">
-                        <br>
-                        <center>
-                            <button type="submit" class="btn btn-success">Entrar</button>
-                        </center>
-                        <br>
-                        <center>
-                            <a data-toggle="modal" data-target="#myModal">¿Aun no estas Registrado? ¡Registrate!</a>
-                        </center>
-                        <input type="text" name="button" id="myBtn">
-                    </form>
-                </div>
-            </div>
+
         </div>
         <br>
         <br>
@@ -54,11 +55,10 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <button type="button" id="cerrar" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     <h3 class="modal-title text-center" id="">Registro</h3>
                 </div>
                 <form id="registro">
-                  <a id="myTooltip" title="Su C.I. Invalido"></a>
                     <div class="modal-body">
                         <div class="form-group">
                             <div class="row">
@@ -82,20 +82,21 @@
                             <div class="row">
                                 <div class="col-md-6 col-md-offset-3 col-xs-8 col-xs-offset-2">
                                     <label>C.I.:</label>
-                                    <input class="form-control" type="number" name="ci" id="ci" placeholder="1234567" required="true">
+                                    <input class="form-control" title="LOL" type="number" name="ci" id="ci" maxlength="8" minlength="7" placeholder="1234567" required="true">
+                                    <a id="myTooltip" title="C.I. Invalido"></a>
                                 </div>
                             </div>
                             <div class="row">
                               <br>
                               <div class="col-md-6 col-md-offset-3 col-xs-8 col-xs-offset-2">
-                                  <div id="mensaje" class="alert"></div>
+                                  <div id="mensaje" class="alert sr-only"></div>
                               </div>
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer" id="modalFooter">
                         <center>
-                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                          <button type="button" id="cerrar2" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                           <button type="submit" class="btn btn-primary">Registrarse</button>
                         </center>
                     </div>
@@ -104,8 +105,8 @@
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="./bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="./js/login.js"></script>
 
 </body>

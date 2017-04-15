@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>Atareados | Inicio</title>
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/inicio.css">
+</head>
+
+<body>
+    <nav id="nav-btn"  class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <!-- El logotipo y el icono que despliega el menú se agrupan
+       para mostrarlos mejor en los dispositivos móviles -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Desplegar navegación</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="inicio.php" id="logo">Atareados</a>
+        </div>
+
+        <!-- Agrupar los enlaces de navegación, los formularios y cualquier
+       otro elemento que se pueda ocultar al minimizar la barra -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse navbar-right">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="inicio.html">Inicio</a></li>
+                <li class="element"><a href="new.html">Nueva Nota</a></li>
+                <li class="element"><a href="new.html">Contactos</a></li>
+                <li class="element"><a href="search.html">Buscar Nota</a></li>
+                <li class="element"><a href="profile.html">Perfil</a></li>
+                <li class="element"><a href="logout.html">Salir</a></li>
+            </ul>
+      </div>
+    </nav>
+    <div class="container" style="padding-top:100px">
+      <div class="col-xs-12 col-md-10 col-md-offset-1">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h2 class="panel-title">Notas Recientes</h2>
+          </div>
+          <div id="recent" class="panel-body">
+            <p>Sin Notas Creadas</p><a href="new.html">Crear Nota</a>
+          </div>
+        </div>
+        <div class="panel panel-danger">
+          <div class="panel-heading">
+            <h2 class="panel-title">Recordatorios</h2>
+          </div>
+          <div class="panel-body" id="remember">
+            <p>Sin Recordatorios</p>
+          </div>
+        </div>
+        <div class="panel panel-success">
+          <div class="panel-heading">
+            <h2 class="panel-title">Notas Recibidas</h2>
+          </div>
+          <div class="panel-body" id="sent">
+            <p>Sin Notas Compartidas</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="./jquery/jquery.min.js"></script>
+    <script src="./bootstrap/js/bootstrap.min.js"></script>
+    <script src="./js/inicio.js"></script>
+</body>
+
+</html>

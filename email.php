@@ -1,8 +1,8 @@
 <?php
- $destino = "Atareados.emi@gmail.com";
+ //$destino = "Atareados.emi@gmail.com";
  $asunto = "Hola";
- $texto = "LoL";
- $desde = "crcesar15@gmail.com";
+ $texto = "LoL \n banana";
+ $destino = "crcesar15@gmail.com";
  $success = mail($destino,$asunto,$texto);
 if ($success == true) {
   echo "funciona";

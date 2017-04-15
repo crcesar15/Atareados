@@ -21,10 +21,15 @@ require_once 'conexion.php';
 
  $recurso=sqlsrv_prepare($conn,$sql);
  if(sqlsrv_execute($recurso)){
-   $e = array('user'=>$sql,'pass'=>$ci);
-   $e = json_encode($e);
-   echo ($e);
+   $asunto = "Registro Exitoso";
+   $texto = "Bienvenido a Atareados!!! \n\n".$tag." ".$ap."\nUsuario: ".$user."\nContraseña:".$ci."\n\nSe Recomienda Modificarlos.";
+   $success = mail($mail,$asunto,$texto);
+  if ($success == true) {
+    $a[0] = "Exito";
+    $e = json_encode($a);
+    echo ($e);
+  } else {
+    echo "LauraSAD";
   }
-
-
+  }
 ?>

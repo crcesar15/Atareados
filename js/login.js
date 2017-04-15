@@ -2,17 +2,10 @@ var ventana_ancho = $(window).width();
 var ventana_alto = $(window).height();
 var mensaje = $('div#mensaje');
 var modalFooter = $('div#modalFooter');
+var msgalert = $('div#msg');
 
 $(document).ready(function($){
 	$('#myTooltip').tooltip({ open: function (e) { setTimeout(function () { $(e.target).tooltip('close'); }, 1000); } });
-	$('#myBtn').click(function () { $('#myTooltip').tooltip('open'); });
-	mensaje.hide('0');
-
-  if (ventana_ancho <= 768) {
-    $('#who').addClass('sr-only');
-  }else {
-  	$('#who').removeClass('sr-only');
-  }
 });
 	var mayusDatos = function(datos){
 		 dato = datos.value;
@@ -33,45 +26,86 @@ $(document).ready(function($){
 	 var ci = data[3].value;
 	 if (ci.indexOf('e') === -1) {
 		 if ((ci.length === 7) || (ci.length === 8)) {
-			 alert("CI. valido");
-			 return false;
+			 console.log('llega');
+			 //true
+			 return true;
 		 }
 		 else {
-		 	alert("CI. Invalido");
+			 console.log('llega2');
+			 $('#myTooltip').tooltip('open');
 			return false;
 
 		 }
 	 }else {
-			 alert("CI. invalido");
+		 	console.log('llega3');
+			 $('#myTooltip').tooltip('open');
 			 return false;
 	 }
  };
 
+$('#cerrar2').click(function() {
+	reload();
+});
+$('#cerrar').click(function() {
+	reload();
+});
 
 $('form#registro').submit(function(e) {
 	e.preventDefault();
 	var datos = $(this).serializeArray();
 	if (validar(datos)) {
-		modalFooter.html('<center><img src="./img/loading.gif" class="img-responsive" height="120" width="120"></center>');
+		modalFooter.html('<center><img src="./img/loading.gif" class="img-responsive" height="100" width="100"></center>');
 		$.ajax({
 			url: 'registro.php',
 			type: 'post',
 			dataType: 'json',
-			data: datos,
+			data: datos
 		})
 		.done(function(msg) {
-			modalFooter.html('<center><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></center>');
+			modalFooter.html('<center><button type="button" id="cerrar2" class="btn btn-default" data-dismiss="modal">Cerrar</button></center>');
 			mensaje.html('Registro satisfactorio, su contraseña se enviara a su E-Mail');
+			mensaje.removeClass('sr-only');
 			mensaje.removeClass('alert-danger');
 			mensaje.addClass('alert-success');
 			mensaje.fadeIn(300);
 		})
 		.fail(function() {
-			modalFooter.html('<center><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></center>');
+			modalFooter.html('<center><a href="index.html" class="btn btn-default">Cerrar</a></center>');
 			mensaje.html('No se pudo registrar, intente más tarde');
+			mensaje.removeClass('sr-only');
 			mensaje.addClass('alert-danger');
 			mensaje.removeClass('alert-success');
 			mensaje.fadeIn(300);
 		});
 	}
 });
+
+$('form#login').submit(function(e){
+	e.preventDefault();
+	var datos = $('form#login').serializeArray();
+	$.ajax({
+		url: 'login.php',
+		type: 'post',
+		dataType: 'text',
+		data: datos
+	})
+	.done(function(msg) {
+		if (msg === "1") {
+			window.location="inicio.html";
+		} else {
+			msgalert.removeClass('sr-only');
+			msgalert.html(msg);
+		}
+	})
+	.fail(function() {
+		msgalert.html(msg);
+		msgalert.html('Sistema no disponible, Lamentamos los Incovenientes');
+	});
+});
+
+var reload = function(){
+	var aux = $('input');
+	for (var i = 0; i < aux.length; i++) {
+		aux[i].value = '';
+	}
+};
