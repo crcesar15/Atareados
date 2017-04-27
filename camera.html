@@ -22,7 +22,11 @@
 
     <script src="./jquery/jquery.min.js"></script>
     <script src="./bootstrap/js/bootstrap.min.js"></script>
+      <script src="./js/push.min.js"></script>
     <script>
+    Push.create("hola mundo push",{
+      body:"Este es un mensaje de Localhost?"
+    });
     var j = 0;
     var k = 0;
     var datos = [];
@@ -45,12 +49,13 @@
         datos[k] = files;
         k = k+1;
       }
+      console.log(datos);
       for (var i = j; i < input.length; i++) {
         if (data.files  && data.files[i]) {
             var reader = new FileReader();
 
             reader.onload = function (e) {
-              html = cont.html()+'<div class="col-xs-3"> <a class="thumbnail"><img src='+e.target.result+' ></a></div>';
+              html = cont.html()+'<div class="col-md-3 col-xs-12"> <a class="thumbnail" width="500px" heigth="500px"><img src='+e.target.result+' ></a></div>';
               cont.html(html);
 
               //$('#img').attr('src', e.target.result);

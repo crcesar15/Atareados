@@ -1,5 +1,4 @@
-var ventana_ancho = $(window).width();
-var ventana_alto = $(window).height();
+
 var mensaje = $('div#mensaje');
 var modalFooter = $('div#modalFooter');
 var msgalert = $('div#msg');
@@ -68,6 +67,7 @@ $('form#registro').submit(function(e) {
 			mensaje.removeClass('alert-danger');
 			mensaje.addClass('alert-success');
 			mensaje.fadeIn(300);
+			mensaje.fadeOut(300);
 		})
 		.fail(function() {
 			modalFooter.html('<center><a href="index.html" class="btn btn-default">Cerrar</a></center>');

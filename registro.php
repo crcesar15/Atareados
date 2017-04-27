@@ -4,6 +4,7 @@ require_once 'conexion.php';
  $ap = $_POST['ap'];
  $mail = $_POST['mail'];
  $ci = $_POST['ci'];
+
  $num = 0;
  $user = substr($tag,0,3);
  $user.=substr($ap,0,3);
@@ -17,9 +18,10 @@ require_once 'conexion.php';
  $user .=$num;
  $user .=substr($ci,0,2);
 
- $sql = "insert into usuarios values (".$ci.",'".$tag."','".$ap."','".$mail."','".$user."','".$ci."');";
+ $sql = "insert into usuarios values (".$ci.",'".$tag."','".$ap."','".$mail."','".$user."','".$ci."','');";
 
  $recurso=sqlsrv_prepare($conn,$sql);
+
  if(sqlsrv_execute($recurso)){
    $asunto = "Registro Exitoso";
    $texto = "Bienvenido a Atareados!!! \n\n".$tag." ".$ap."\nUsuario: ".$user."\nContraseña:".$ci."\n\nSe Recomienda Modificarlos.";
@@ -31,5 +33,5 @@ require_once 'conexion.php';
   } else {
     echo "LauraSAD";
   }
-  }
+}
 ?>
