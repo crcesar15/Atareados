@@ -3,7 +3,7 @@
   session_start();
   $id = $_SESSION['id'];
   $i = 0;
-  $sql = "SELECT materia.id_materia, nombre_materia, color from materia join cursa on materia.id_materia=cursa.id_materia where id_usuario = 8371213";
+  $sql = "SELECT materia.id_materia, nombre_materia from materia join cursa on materia.id_materia=cursa.id_materia where id_usuario = $id";
   $stmt = sqlsrv_query($conn,$sql);
   $rows = sqlsrv_has_rows($stmt);
   if ($rows === true){
@@ -13,5 +13,4 @@
     }
     echo json_encode($v);
   }
-  //echo $data;
  ?>

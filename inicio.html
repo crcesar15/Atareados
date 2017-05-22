@@ -6,8 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <title>Atareados | Inicio</title>
+    <link rel="shortcut icon" type="image/png" href="./img/icon.png" />
     <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="./css/inicio.css">
+    <link rel="stylesheet" href="./css/search.css">
 </head>
 
 <body>
@@ -21,50 +23,65 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="inicio.php" id="logo">Atareados</a>
+          <a class="navbar-brand" href="index.php" id="logo">Atareados</a>
         </div>
 
         <!-- Agrupar los enlaces de navegación, los formularios y cualquier
        otro elemento que se pueda ocultar al minimizar la barra -->
         <div class="collapse navbar-collapse navbar-ex1-collapse navbar-right">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="inicio.html">Inicio</a></li>
-                <li class="element"><a href="new.html">Nueva Nota</a></li>
-                <li class="element"><a href="contacts.html">Contactos</a></li>
-                <li class="element"><a href="search.html">Buscar Nota</a></li>
-                <li class="element"><a href="profile.html">Perfil</a></li>
-                <li class="element"><a href="logout.php">Salir</a></li>
+                <li ><a class="active" style="color:white" href="inicio.html"><span class="glyphicon glyphicon-home"></span> Inicio</a></li>
+                <li class="dropdown">
+                  <a style="color:white" class="element" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-book"></span> Notas <b class="caret"></b></a>
+                  <ul class="dropdown-menu" style="background:#1a242f;">
+                    <li><a class="element" style="color:rgb(129, 129, 129)" href="search.html"><span class="glyphicon glyphicon-search"></span>  Buscar</a></li>
+                    <li><a class="element" style="color:rgb(129, 129, 129);" href="new.html"><span class="glyphicon glyphicon-paperclip"></span>  Nueva Nota</a></li>
+                  </ul>
+                </li>
+                <li><a class="element" style="color:white" href="contacts.html"><span class="glyphicon glyphicon-phone"></span> Contactos</a></li>
+                <li class="dropdown">
+                  <a style="color:white" class="element" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> Sobre Ti <b class="caret"></b></a>
+                  <ul class="dropdown-menu" style="background:#1a242f;">
+                    <li><a class="element" style="color:rgb(129, 129, 129);" href="profile.html"><span class="glyphicon glyphicon-tasks"></span> Perfil</a></li>
+                    <li><a class="element" style="color:rgb(129, 129, 129);" href="subjects.html"><span class="glyphicon glyphicon-book"></span> Materias</a></li>
+                  </ul>
+                </li>
+                <li><a class="element" style="color:white" href="logout.php"><span class="glyphicon glyphicon-log-out"></span> Salir</a></li>
             </ul>
       </div>
     </nav>
     <div class="container" style="padding-top:100px">
       <div class="col-xs-12 col-md-10 col-md-offset-1">
-        <div class="panel panel-default">
+        <div class="panel panel-primary">
           <div class="panel-heading">
-            <h2 class="panel-title">Notas Recientes</h2>
+            <h2 class="panel-title text-center">Notas Recientes</h2>
           </div>
           <div id="recent" class="panel-body">
-            <p>Sin Notas Creadas</p><a href="new.html">Crear Nota</a>
+            <p class="default text-center">Sin Notas Creadas</p>
+            <center>
+              <a class="btn btn-primary" href="new.html"> <span class="glyphicon glyphicon-pencil"></span> Crear Nota</a>
+            </center>
           </div>
         </div>
         <div class="panel panel-danger">
           <div class="panel-heading">
-            <h2 class="panel-title">Recordatorios</h2>
+            <h2 class="panel-title text-center">Recordatorios</h2>
           </div>
-          <div class="panel-body" id="remember">
-            <p>Sin Recordatorios</p>
+          <div class="panel-body" id="reminder">
+            <p class="default text-center">Sin Recordatorios</p>
           </div>
         </div>
         <div class="panel panel-success">
           <div class="panel-heading">
-            <h2 class="panel-title">Notas Recibidas</h2>
+            <h2 class="panel-title text-center">Notas Recibidas</h2>
           </div>
           <div class="panel-body" id="sent">
-            <p>Sin Notas Compartidas</p>
+            <p class="default text-center">Sin Notas Compartidas</p>
           </div>
         </div>
       </div>
     </div>
+
     <script src="./jquery/jquery.min.js"></script>
     <script src="./bootstrap/js/bootstrap.min.js"></script>
     <script src="./js/inicio.js"></script>

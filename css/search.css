@@ -1,0 +1,28 @@
+.buscador{
+  background-color: rgba(33, 5, 65, 0.16);
+  padding: 15px;
+  border-radius: 15px;
+}
+
+.letter-white{
+  color: #1a242f;
+}
+
+.default{
+  color: rgb(172, 172, 172);
+  font-size: 30px;
+}
+
+.icono{
+  height: 75px;
+  width: 75px;
+  background-color: rgba(22, 36, 111, 0.32);
+  border: 1px solid hsl(0, 0%, 17%);
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px hsl(0, 0%, 17%);
+}
+hr{
+  background-color:rgb(21, 17, 50);
+  height: 3px;
+
+}

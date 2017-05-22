@@ -19,17 +19,27 @@
     <button id="b" type="button" class="btn btn-success">
         Tomar foto
     </button>
+    <button type="button" name="button" id="noti">Notificacion</button>
 
     <script src="./jquery/jquery.min.js"></script>
     <script src="./bootstrap/js/bootstrap.min.js"></script>
       <script src="./js/push.min.js"></script>
     <script>
-    Push.create("hola mundo push",{
-      body:"Este es un mensaje de Localhost?"
+
+    $('button#noti').click(function(event) {
+      Push.create('Hello world!', {
+          body: 'How\'s it hangin\'?',
+          icon: 'img/icon.png',
+          timeout: 4000,
+          onClick: function () {
+              console.log("Fired!");
+              window.focus();
+              this.close();
+          },
+          vibrate: [200, 100, 200, 100, 200, 100, 200]
+      });
     });
-    var j = 0;
-    var k = 0;
-    var datos = [];
+
 
     $('document').ready(function(){
       var cont = $('div.container .row');

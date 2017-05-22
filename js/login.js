@@ -55,9 +55,9 @@ $('form#registro').submit(function(e) {
 	if (validar(datos)) {
 		modalFooter.html('<center><img src="./img/loading.gif" class="img-responsive" height="100" width="100"></center>');
 		$.ajax({
-			url: 'registro.php',
+			url: 'php/registro.php',
 			type: 'post',
-			dataType: 'json',
+			dataType: 'JSON',
 			data: datos
 		})
 		.done(function(msg) {
@@ -66,11 +66,11 @@ $('form#registro').submit(function(e) {
 			mensaje.removeClass('sr-only');
 			mensaje.removeClass('alert-danger');
 			mensaje.addClass('alert-success');
-			mensaje.fadeIn(300);
-			mensaje.fadeOut(300);
+			mensaje.fadeIn(3000);
+			mensaje.fadeOut(3000);
 		})
 		.fail(function() {
-			modalFooter.html('<center><a href="index.html" class="btn btn-default">Cerrar</a></center>');
+			modalFooter.html('<center><a href="php/index.html" class="btn btn-default">Cerrar</a></center>');
 			mensaje.html('No se pudo registrar, intente más tarde');
 			mensaje.removeClass('sr-only');
 			mensaje.addClass('alert-danger');
@@ -84,7 +84,7 @@ $('form#login').submit(function(e){
 	e.preventDefault();
 	var datos = $('form#login').serializeArray();
 	$.ajax({
-		url: 'login.php',
+		url: 'php/login.php',
 		type: 'post',
 		dataType: 'text',
 		data: datos

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>Atareados | Inicio</title>
+    <link rel="shortcut icon" type="image/png" href="./img/icon.png" />
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/bootpop.css">
+    <link rel="stylesheet" href="./css/inicio.css">
+    <link rel="stylesheet" href="./css/dropzone.css">
+</head>
+
+<body>
+  <nav id="nav-btn"  class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <!-- El logotipo y el icono que despliega el menú se agrupan
+     para mostrarlos mejor en los dispositivos móviles -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+          <span class="sr-only">Desplegar navegación</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.php" id="logo">Atareados</a>
+      </div>
+
+      <!-- Agrupar los enlaces de navegación, los formularios y cualquier
+     otro elemento que se pueda ocultar al minimizar la barra -->
+      <div class="collapse navbar-collapse navbar-ex1-collapse navbar-right">
+          <ul class="nav navbar-nav">
+              <li ><a class="element" style="color:white" href="inicio.html"><span class="glyphicon glyphicon-home"></span> Inicio</a></li>
+              <li class="dropdown">
+                <a style="color:white" class="active" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-book"></span> Notas <b class="caret"></b></a>
+                <ul class="dropdown-menu" style="background:#1a242f;">
+                  <li><a class="element" style="color:rgb(129, 129, 129)" href="search.html"><span class="glyphicon glyphicon-search"></span>  Buscar</a></li>
+                  <li><a class="element" style="color:rgb(129, 129, 129);" href="new.html"><span class="glyphicon glyphicon-paperclip"></span>  Nueva Nota</a></li>
+                </ul>
+              </li>
+              <li><a class="element" style="color:white" href="contacts.html"><span class="glyphicon glyphicon-phone"></span> Contactos</a></li>
+              <li class="dropdown">
+                <a style="color:white" class="element" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> Sobre Ti <b class="caret"></b></a>
+                <ul class="dropdown-menu" style="background:#1a242f;">
+                  <li><a class="element" style="color:rgb(129, 129, 129);" href="profile.html"><span class="glyphicon glyphicon-tasks"></span> Perfil</a></li>
+                  <li><a class="element" style="color:rgb(129, 129, 129);" href="subjects.html"><span class="glyphicon glyphicon-book"></span> Materias</a></li>
+                </ul>
+              </li>
+              <li><a class="element" style="color:white" href="logout.php"><span class="glyphicon glyphicon-log-out"></span> Salir</a></li>
+          </ul>
+    </div>
+  </nav>
+  <div class="container">
+    <form id="nota" action="index.html" method="post" style="padding-top:100px">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title text-center"><strong>Nota</strong></h3>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+              <br>
+              <label>Titulo</label>
+              <input type="text" name="title" id="title" class="form-control" required="true" disabled>
+              <br>
+              <label>Materia</label>
+              <select class="form-control" name="subject" id="sub" required="true" disabled>
+              </select>
+              <br>
+              <label>Archivos</label>
+                <div class="dropzone dz-started" id="mydz">
+
+                </div>
+              <br>
+              <label>Descripción</label>
+              <textarea name="about" rows="4" cols="80" class="form-control" id="desc" placeholder="Agregue Alguna Descripcion (Opcional)" disabled></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="panel-footer">
+          <center>
+          <button data-toggle="modal" data-target="#modal1" type="button" class="btn btn-info" id="reminder">
+            <span class="glyphicon glyphicon-time"></span>
+             Agregar Recordatorio
+          </button>
+          <button type="submit" class="btn btn-success hide" id="save">
+            <span class="glyphicon glyphicon-save"></span>
+             Guardar
+          </button>
+          <button type="button" class="btn btn-warning" id="share">
+            <span class="glyphicon glyphicon-share"></span>
+            Compartir
+          </button>
+          <button type="button" class="btn btn-success" id="modify">
+            <span class="glyphicon glyphicon-pencil"></span>
+            Modificar
+          </button>
+          <button type="button" class="btn btn-danger" id="del">
+            <span class="glyphicon glyphicon-trash"></span>
+            Eliminar
+          </button>
+        </center>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title text-center" id="">Recordatorio</h4>
+        </div>
+        <form method="post" id="record">
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+                <label>Titulo del Recordatorio</label>
+                <input type="text" name="rtitle" id="rtitle" class="form-control" required="true">
+                <br>
+                <div class="row">
+                  <div class="col-xs-6">
+                    <label>Fecha</label>
+                    <input type="date" name="rdate" id="rdate" class="form-control" required="true">
+                  </div>
+                  <div class="col-xs-6">
+                    <label>Hora</label>
+                    <input type="time" name="rhour" id="rhour" class="form-control" required="true">
+                  </div>
+                </div>
+                <br>
+                <label>Descripcion</label>
+                <textarea name="rdesc" id="rdesc" rows="2" cols="80" class="form-control"></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+            <button type="button" id="delrem" class="btn btn-danger hide"> <span class="glyphicon glyphicon-trash"></span> Eliminar Recordatorio</button>
+            <button type="submit" class="btn btn-success"> <span class="glyphicon glyphicon-save"></span> Guardar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+    <script src="./jquery/jquery.min.js"></script>
+    <script src="./bootstrap/js/bootstrap.min.js"></script>
+    <script src="./js/dropzone.js"></script>
+    <script src="./js/bootpop.js"></script>
+    <script src="./js/view.js"></script>
+</body>
+</html>

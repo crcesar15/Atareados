@@ -1,12 +1,10 @@
-var a = $('input');
+var a = $('input.data');
 var dato = [];
 var info;
 var src = '';
 var flag = 0;
 var mensaje = $('div#mensaje');
-var materias = $('div#materias');
 var image = $('input#file2');
-
 var modificar = function(data){
   a[0].value=data[1];
   a[1].value=data[2];
@@ -18,12 +16,13 @@ var modificar = function(data){
 var actualizar = function(){
 
   $.ajax({
-    url: 'profile.php',
+    url: 'php/profile.php',
     dataType: 'JSON'
   })
   .done(function(data) {
     modificar(data);
     info = data;
+
     if(data[6] !== ""){
       $('img#photo').attr('src', data[6]);
       $('img#photoEdit').attr('src', data[6]);
@@ -35,32 +34,8 @@ var actualizar = function(){
 };
 
 $(document).ready(function() {
-  $('#tags').bootcomplete({
-      url:'subjects2.php',
-      method: 'POST',
-      minLength:2
-  });
-
-  image = $('input#file2')
+  image = $('input#file2');
   actualizar();
-
-  $.ajax({
-    url: 'subjects.php',
-    type: 'POST',
-    dataType: 'JSON'
-  })
-  .done(function(msg) {
-    var html = '<table class="table"><tr><th>Nº</th><th>Nombre Materia</th><th>Accion</th></tr>';
-    for (var i = 0; i < msg.length; i++) {
-      var aux = JSON.parse(msg[i]);
-      html = html+'<tr><td>'+aux[0]+'</td><td>'+aux[1]+'</td><td>'+aux[2]+'</td></tr>';
-    }
-    html = html+'</table>';
-    materias.html(html);
-  })
-  .fail(function() {
-    console.log('Error');
-  });
 });
 
 $('a#modif').click(function(event) {
@@ -77,7 +52,7 @@ $('a#modif').click(function(event) {
     modificar(info);
     $('button#savedata').addClass('hide');
     $('a#modif').removeClass('btn-danger');
-    $('a#modif').addClass('btn-info');
+    $('a#modif').addClass('btn-primary');
     $('a#modif').html('<span class="glyphicon glyphicon-pencil"></span> Modificar');
     for (var i = 0; i < a.length; i++) {
       a[i].disabled=true;
@@ -112,7 +87,7 @@ image.change(function(){
 $('button#save').click(function(event) {
   event.preventDefault();
   $.ajax({
-    url: 'uploadimg.php',
+    url: 'php/uploading.php',
     type: 'POST',
     contentType:false,
     data: dato,
@@ -120,8 +95,9 @@ $('button#save').click(function(event) {
     cache:false
   })
   .done(function(msg) {
-    $('img#photo').attr('src', src);
-    $('button#close').click();
+    //$('img#photo').attr('src', src);
+    //$('button#close').click();
+    location.reload(true);
   })
   .fail(function() {
     alert("error");
@@ -133,7 +109,7 @@ $('form#actualizar').submit(function(e) {
 	var datos = $(this).serializeArray();
 		$('img#loading').removeClass('hide');
 		$.ajax({
-			url: 'update.php',
+			url: 'php/update.php',
 			type: 'post',
 			dataType: 'text',
 			data: datos

@@ -18,8 +18,7 @@ require_once 'conexion.php';
  $user .=$num;
  $user .=substr($ci,0,2);
 
- $sql = "insert into usuarios values (".$ci.",'".$tag."','".$ap."','".$mail."','".$user."','".$ci."','');";
-
+ $sql = "INSERT into usuarios values (".$ci.",'".$tag."','".$ap."','".$mail."','".$user."','".$ci."','');";
  $recurso=sqlsrv_prepare($conn,$sql);
 
  if(sqlsrv_execute($recurso)){
@@ -27,6 +26,7 @@ require_once 'conexion.php';
    $texto = "Bienvenido a Atareados!!! \n\n".$tag." ".$ap."\nUsuario: ".$user."\nContraseña:".$ci."\n\nSe Recomienda Modificarlos.";
    $success = mail($mail,$asunto,$texto);
   if ($success == true) {
+    mkdir("../files/".$ci, 0777);
     $a[0] = "Exito";
     $e = json_encode($a);
     echo ($e);
